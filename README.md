@@ -26,7 +26,19 @@ http://stackoverflow.com/questions/28002176/tomcat-connection-pool-few-methods-n
 - `JdbcTemplate` seems to be suppressing calls to close the connection when the connection has been unwrapped or the simple native JDBC extractor
 has been used for the same purpose.  Wrapping the delegate connection in a try-with forces closure of the wrapping connection and this seems to work.
 
-#### Java 8 type annotations
+#### Java 8 
+
+##### New methods on Collection interfaces
+In addition to the new stream-related methods, there are a number of really useful new default methods on the `Map` interface, for example:
+
+```java
+computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction);
+computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction);
+putIfAbsent(K key, V value);
+```
+etc - see [Java 8 Map API](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
+
+##### Type annotations
 Some nice stuff: https://dzone.com/articles/java-8-type-annotations.  In conjunction check out the [Checker Framework](http://types.cs.washington.edu/checker-framework/current/checker-framework-manual.html)
 
 ### Eclipse / STS
