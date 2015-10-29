@@ -6,7 +6,7 @@
 
 #### Get object identity  when toString / hashcode overridden:
 ```java
-Integer.toHexString(System.identityHashCode(objectReference))
+String objToString = Integer.toHexString(System.identityHashCode(objectReference));
 ```
 
 #### Weak references
