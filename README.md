@@ -1,6 +1,6 @@
 # Tips and Tricks
 
-[thomasbunting@gmail.com](mailto:thomasbunting@gmail.com) 2015
+Tom Bunting 2015
 
 ### Java
 
