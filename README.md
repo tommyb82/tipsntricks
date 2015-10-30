@@ -176,3 +176,10 @@ Quick fix - ignore - solved. Or: http://stackoverflow.com/questions/15938466
 ### Google Chrome
 #### Slow Omni bar
 Clear contents of: "C:\Users\[user_name]\AppData\Local\Google\Chrome\User Data\Default\Cache"
+
+### Stack Overflow
+#### reliably formatting multiline code blocks
+Wrap the block in:
+```html
+<pre><code>{code}</code></pre>
+```
