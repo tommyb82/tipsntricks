@@ -42,7 +42,7 @@ etc - see [Java 8 Map API](https://docs.oracle.com/javase/8/docs/api/java/util/M
 Some nice stuff: https://dzone.com/articles/java-8-type-annotations.  In conjunction check out the [Checker Framework](http://types.cs.washington.edu/checker-framework/current/checker-framework-manual.html)
 
 ### Eclipse / STS
-#### Improve startup time (dramatically)
+#### Improve startup time (dramatically!)
 Minimise the number of plugins
 
 * installed
@@ -53,6 +53,9 @@ Some nice stuff esp. related to lambdas: https://www.eclipse.org/eclipse/news/4.
 
 #### Preferences
 Regularly export preferences and code format (whenever a change has been made and adopted).
+
+#### Favourite static imports
+Add regularly used static imports to **Window - Preferences - Java - Editor - Content Assist - Favourites**.  Good candidates are for example the Spring helper classes used in testing, e.g. `MockRestResponseCreators.*`, `MockMvcResultMatchers.*`, JUnit's `Assert.*` class, etc
 
 ### Git / EGit
 
