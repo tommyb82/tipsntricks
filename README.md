@@ -41,6 +41,9 @@ etc - see [Java 8 Map API](https://docs.oracle.com/javase/8/docs/api/java/util/M
 ##### Type annotations
 Some nice stuff: https://dzone.com/articles/java-8-type-annotations.  In conjunction check out the [Checker Framework](http://types.cs.washington.edu/checker-framework/current/checker-framework-manual.html)
 
+##### Other goodies
+[InfoQ article](http://www.infoq.com/articles/Java-8-Quiet-Features) e.g. `StampedLock`, `LongAdder` (**always** favour over `AtomicLong`, `AtomicInteger` etc due to high-contention performance improvements), `Arrays.parallelSort(myArray)`
+
 ### Eclipse / STS
 #### Improve startup time (dramatically!)
 Minimise the number of plugins
