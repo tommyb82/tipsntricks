@@ -153,8 +153,8 @@ Use an inbound http-gateway to setup a *replying* HTTP messaging endpoint akin t
 @Bean
 public IntegrationFlow locationsGateway() {
     return IntegrationFlows
-            .from(inboundGateway("/locations").requestMapping(r -> r.params("station_name"))
-                    .payloadExpression("#requestParams.station_name"))
+            .from(inboundGateway("/accounts").requestMapping(r -> r.params("account_num"))
+                    .payloadExpression("#requestParams.account_num"))
             .enrichHeaders(headerSpec -> headerSpec.header(HttpHeaders.CONTENT_TYPE,
                     MediaType.APPLICATION_JSON_VALUE, Boolean.TRUE))
             .gateway(obsLocationsOutboundFlow()).get();
