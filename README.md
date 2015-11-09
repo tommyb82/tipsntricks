@@ -41,6 +41,12 @@ etc - see [Java 8 Map API](https://docs.oracle.com/javase/8/docs/api/java/util/M
 ##### Type annotations
 Some nice stuff: https://dzone.com/articles/java-8-type-annotations.  In conjunction check out the [Checker Framework](http://types.cs.washington.edu/checker-framework/current/checker-framework-manual.html)
 
+##### LongAccumulator
+When using `LongAccumulator` in a multi-threaded environment always ensure that the binary accumulation function provided is not order-dependent.  For example, `Math::addExact` would produce consistent results, where as `Math::subtractExact` would not (addition is order-independent, subtraction is not).
+
+##### Parallel streams and Spliterators
+Great article working through and explaining different divide-and-conquer approaches to prime number generation, from single-thread brute through recursive fork-join to streams and spliterators: [DZone article](https://dzone.com/articles/parallel-streams-and)
+
 ##### Other goodies
 [InfoQ article](http://www.infoq.com/articles/Java-8-Quiet-Features) e.g. `StampedLock`, `LongAdder` (**always** favour over `AtomicLong`, `AtomicInteger` etc due to high-contention performance improvements), `Arrays.parallelSort(myArray)`, `StringJoiner`, `Long.hashCode(long value)`
 
@@ -145,6 +151,10 @@ That way, any other `@Configuration` classes will be located, but component scan
 Or to run with maven spring-boot plugin, see:
 http://docs.spring.io/spring-boot/docs/current/reference/html/howto-hotswapping.html
 
+#### Enterprise Integration Patterns
+##### Spring Integration / Apache Camel comparison
+Great comment on semantic diffs between two EIP frameworks: http://callistaenterprise.se/blogg/teknik/2015/10/12/apache-camel-vs-spring-integration/
+
 #### Spring Integration - Java DSL
 ##### Inbound / Outbound HTTP gateways
 Use an inbound http-gateway to setup a *replying* HTTP messaging endpoint akin to an MVC controller request mapping, and or an inbound channel when the request is one-way (response not required beyond **200 OK** status returned):
@@ -160,7 +170,10 @@ public IntegrationFlow locationsGateway() {
             .gateway(obsLocationsOutboundFlow()).get();
 }
 ```
+##### Architecture
+Message channels represent the 'pipes' in a pipes-and-filters architecture.  Producers **send** messages to a channel and consumers **recive** messages from a channel. A message channel may follow either P2P (aka queue, at most one subscriber receives each msg) or Pub-Sub (aka topic; msgs broadcast to all subscribers) semantics.
 
+In SI, **Pollable* channels are capable of buffering messages in a queue, supporting throttling and overloading of a msg consumer.
 
 ### Maven / M2E
 
