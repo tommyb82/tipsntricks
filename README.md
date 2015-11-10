@@ -47,6 +47,9 @@ When using `LongAccumulator` in a multi-threaded environment always ensure that 
 ##### Parallel streams and Spliterators
 Great article working through and explaining different divide-and-conquer approaches to prime number generation, from single-thread brute through recursive fork-join to streams and spliterators: [DZone article](https://dzone.com/articles/parallel-streams-and)
 
+##### Stream extensions: jOOL library
+For extensions to the Stream API providing for example some useful sequential stream functionality, check out the jOOL library: [jOOL blog](http://blog.jooq.org/2014/09/10/when-the-java-8-streams-api-is-not-enough/), [jOOL API v0.9.7](http://www.jooq.org/products/jOO%CE%BB/javadoc/0.9.7/index.html?overview-summary.html)
+
 ##### Other goodies
 [InfoQ article](http://www.infoq.com/articles/Java-8-Quiet-Features) e.g. `StampedLock`, `LongAdder` (**always** favour over `AtomicLong`, `AtomicInteger` etc due to high-contention performance improvements), `Arrays.parallelSort(myArray)`, `StringJoiner`, `Long.hashCode(long value)`
 
