@@ -205,3 +205,29 @@ Wrap the block in:
 ```html
 <pre><code>{code}</code></pre>
 ```
+
+### Apache Camel
+#### Reading a CSV and split-streaming to a Kafka topic
+Reading a CSV once an hour from an HTTP endpoint (via a `POST` request), unmarshalling it (lazily), splitting the contents by line then streaming the marhsalled JSON objects (each representing a line in the CSV) to the local logging system and a Kafka topic.
+
+```java
+void configure() {
+        final CsvDataFormat csvFormat = new CsvDataFormat();
+        csvFormat.setUseMaps(TRUE); // unmarshal CSV to maps rather than Lists
+        csvFormat.setLazyLoad(TRUE); // read line-by-line (avoid OOM)
+
+        final String localKafkaTopicURI =
+                new StringJoiner("&").add("kafka:localhost:9092?topic=obs").add("zookeeperConnect=localhost:2181")
+                        .add("serializerClass=kafka.serializer.StringEncoder").add("requestRequiredAcks=-1").toString();
+
+        from("timer://obstimer?fixedRate=true&period=1h").setHeader(Exchange.HTTP_METHOD, constant("POST"))
+                .setHeader(Exchange.CONTENT_TYPE, constant("application/x-www-form-urlencoded"))
+                .setBody(
+                        simple("Type=Observation&PredictionSiteID=ALL&ObservationSiteID=ALL&Date=26%2F11%2F2015&PredictionTime=0500"))
+                .to("https://weather.data.gov.uk/query").routeId("obs").unmarshal(csvFormat).split(body()).streaming()
+                .marshal().json(JsonLibrary.Jackson).convertBodyTo(String.class)
+                .to("log:example.com.routers.landobs?level=TRACE&showExchangePattern=false").to(localKafkaTopicURI)
+                .end();
+    }
+```
+
