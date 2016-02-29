@@ -54,11 +54,14 @@ For extensions to the Stream API providing for example some useful sequential st
 [InfoQ article](http://www.infoq.com/articles/Java-8-Quiet-Features) e.g. `StampedLock`, `LongAdder` (**always** favour over `AtomicLong`, `AtomicInteger` etc due to high-contention performance improvements), `Arrays.parallelSort(myArray)`, `StringJoiner`, `Long.hashCode(long value)`
 
 ### Eclipse / STS
-#### Improve startup time (dramatically!)
-Minimise the number of plugins
+#### Improve startup/shutdown time (dramatically!)
+##### Minimise the number of plugins
 
 * installed
 * set to load on startup - to change go to **Window - Preferences - General - Startup & Shutdown** and untick all but the 'essential' ones.
+
+##### Limit local history to 1 day
+Window - Preferences - General - Workspace - Local History
 
 #### v4.5 (Mars) JDT features
 Some nice stuff esp. related to lambdas: https://www.eclipse.org/eclipse/news/4.5/jdt.php e.g. Quick assist (CTRL+1) for options to convert anonymous blocks to lambdas, lambdas to method references, make inferred lambda type parameters explicit, etc.
