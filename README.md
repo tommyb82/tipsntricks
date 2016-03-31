@@ -192,6 +192,12 @@ Your workspace is likely corrupt - create a new one!
 #### gmaven m2e project import problem: 
 Quick fix - ignore - solved. Or: http://stackoverflow.com/questions/15938466
 
+#### Archetype createion / usage
+##### Creating an archetype from an existing project
+mvn archetype:create-from-project -DoutputDirectory ../pwms-springboot-service
+
+##### Generating a new project from an archetype
+
 ### Linux:
 #### Remove windows line delimiters from files in vi:
 ```sh
