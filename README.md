@@ -5,9 +5,8 @@ Tom Bunting 2015
 ### Java
 
 #### Get object identity  when toString / hashcode overridden:
-```java
-String objToString = Integer.toHexString(System.identityHashCode(objectReference));
-```
+    String objToString = Integer.toHexString(System.identityHashCode(objectReference));
+
 
 #### Weak references
 In order from strongest to weakest:
@@ -101,38 +100,34 @@ Right click the origin server under Remotes -> origin and select 'Fetch'. Then c
 
 #### Remote branch reset
 Refer to: http://stackoverflow.com/questions/5816688/reseting-remote-to-a-certain-commit
-```
-git reset --hard <commit-hash>
-git push -f origin master
-```
+
+    git reset --hard <commit-hash>
+    git push -f origin master
 
 This will discard previous commit so be careful when others may be working on the same remote branch!
 
 #### Undo (reset) last commit
 Refer to: http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit
-```sh
-git reset --soft HEAD~1
-git push -f origin [name of branch]
-```
+
+    git reset --soft HEAD~1
+    git push -f origin [name of branch]
+
 That'll reset the active local branch.. then to push to the remote branch if you've really messed things up:
 
 #### Merge from upstream/master favouring remote branch changes:
-```sh
-git merge -s recursive --strategy-option=theirs upstream/master
-```
+
+    git merge -s recursive --strategy-option=theirs upstream/master
+
 This will resolve all conflicts in favour of 'theirs'
 
 ### Apache / Tomcat
 #### Listen to comms coming in to apache:
 
-```sh
-sudo tcpdump -A -s 0 'tcp dst port 80'`
-```
+    sudo tcpdump -A -s 0 'tcp dst port 80'
 
 #### Listening to communication between Apache and tomcat:
-```sh
-sudo tcpdump -A -s 0 -i lo 'tcp dst port 8083'`
-```
+
+    sudo tcpdump -A -s 0 -i lo 'tcp dst port 8083'
 
 (where tomcat is proxied on port 8083 via Apache). Crucial thing here is the -i lo to specify the LOCAL interface, not eth0, eth1 etc
 
@@ -194,15 +189,13 @@ Quick fix - ignore - solved. Or: http://stackoverflow.com/questions/15938466
 
 #### Archetype createion / usage
 ##### Creating an archetype from an existing project
-mvn archetype:create-from-project -DoutputDirectory ../pwms-springboot-service
+    mvn archetype:create-from-project -DoutputDirectory ../pwms-springboot-service
 
 ##### Generating a new project from an archetype
 
 ### Linux:
 #### Remove windows line delimiters from files in vi:
-```sh
-:set fileformat=unix`
-```
+    :set fileformat=unix
 
 ### Google Chrome
 #### Slow Omni bar
@@ -211,9 +204,8 @@ Clear contents of: "C:\Users\[user_name]\AppData\Local\Google\Chrome\User Data\D
 ### Stack Overflow
 #### reliably formatting multiline code blocks
 Wrap the block in:
-```html
-<pre><code>{code}</code></pre>
-```
+    <pre><code>{code}</code></pre>
+
 
 ### Apache Camel
 #### Reading a CSV and split-streaming to a Kafka topic
@@ -240,3 +232,12 @@ void configure() {
     }
 ```
 
+### Docker
+
+#### Statistics for all running containers
+    docker stats \`docker ps | awk '{print $NF}' | grep -v NAMES\`
+    
+#### Spin up new container
+In the background, with max container memory, host/guest OS port and volume mapping:
+
+    docker run --name my-service -d -m 256m -p 8080:8080 -v /data/my-service:/app/data tommyb/my-service
