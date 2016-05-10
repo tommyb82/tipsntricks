@@ -1,7 +1,5 @@
 # Tips and Tricks
 
-Tom Bunting 2015
-
 ### Java
 
 #### Get object identity  when toString / hashcode overridden:
