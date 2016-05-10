@@ -241,3 +241,6 @@ void configure() {
 In the background, with max container memory, host/guest OS port and volume mapping:
 
     docker run --name my-service -d -m 256m -p 8080:8080 -v /data/my-service:/app/data tommyb/my-service
+
+#### Open shell into running container
+    docker exec -it "id of running container" bash
