@@ -118,6 +118,19 @@ That'll reset the active local branch.. then to push to the remote branch if you
 
 This will resolve all conflicts in favour of 'theirs'
 
+#### Squashing a load of commits via an interactive rebase
+After making a series of small or subsequently reverted commits, for example when iteratively testing some change affecting or affected by the
+CI builds, it is a good idea to squash all these meaningless commits into one single commit with the result being a sensible set of changes that
+reflect the feature being built. This can be done via an interactive rebase on the working branch:
+
+##### Using interactive rebase:
+    git rebase -i <last_commit_to_preserve_as_is> 
+
+Then use the interactive editor to replace `pick` with `squash` or `fixup` for the second and subsequent commits you want
+to squash into the first.  Then optionally force-push the rewritten history to the remote tracking branch:
+
+    git push -f origin <branch_name>
+
 ### Apache / Tomcat
 #### Listen to comms coming in to apache:
 
