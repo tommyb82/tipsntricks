@@ -244,6 +244,8 @@ void configure() {
 ```
 
 ### Docker
+#### Remove all exited containers
+    docker rm $(docker ps -a -q -f status=exited)
 
 #### Statistics for all running containers
     docker stats \`docker ps | awk '{print $NF}' | grep -v NAMES\`
