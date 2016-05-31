@@ -244,6 +244,13 @@ void configure() {
 ```
 
 ### Docker
+#### Open a shell within an existing container
+    sudo docker exec -it <containerID> bash
+    
+or, e.g. for Alpine linux:
+
+    sudo docker exec -it <containerID> /bin/sh
+
 #### Remove all exited containers
     docker rm $(docker ps -a -q -f status=exited)
 
