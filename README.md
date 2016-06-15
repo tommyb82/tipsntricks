@@ -71,6 +71,20 @@ Add regularly used static imports to **Window - Preferences - Java - Editor - Co
 
 ### Git / EGit
 
+#### Local and remote branch rename:
+See https://multiplestates.wordpress.com/2015/02/05/rename-a-local-and-remote-branch-in-git/
+* Rename your local branch. If you are on the branch you want to rename: 
+
+    git branch -m new-name
+    
+* Delete the old-name remote branch and push the new-name local branch:
+
+    git push origin :old-name new-name
+    
+* Reset the upstream branch for the new-name local branch. Switch to the branch and then:
+
+    git push origin -u new-name
+
 #### EGit: fetch new remotes 
 Right click the origin server under Remotes -> origin and select 'Fetch'. Then checkout into a (new) local branch and switch to the new branch
 
