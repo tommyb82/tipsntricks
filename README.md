@@ -176,7 +176,7 @@ public class BackgroundTask {
     }
 
 }
-```java
+```
 
 Class 2: task scheduler
 
@@ -194,7 +194,7 @@ public class BackgroundTaskInitialiser {
     }
 
 }
-```java
+```
 
 Reference: http://docs.spring.io/spring/docs/current/spring-framework-reference/html/scheduling.html
 
