@@ -161,40 +161,40 @@ to squash into the first.  Then optionally force-push the rewritten history to t
 
 Class 1 (do something in the background..):
 
-    ```java
-    @Component
-    public class BackgroundTask {
-    
-        private int counter;
-    
-        @Async
-        void slowCount() throws InterruptedException {
-            while (true) {
-                out.println("Counter is now: " + ++counter);
-                Thread.sleep(5000);
-            }
+```java
+@Component
+public class BackgroundTask {
+
+    private int counter;
+
+    @Async
+    void slowCount() throws InterruptedException {
+        while (true) {
+            out.println("Counter is now: " + ++counter);
+            Thread.sleep(5000);
         }
-    
     }
-    ```java
+
+}
+```java
 
 Class 2: task scheduler
 
-    ```java
-    @Configuration
-    @EnableAsync
-    public class BackgroundTaskInitialiser {
-    
-        @Autowired
-        private BackgroundTask backgroundTask;
-    
-        @PostConstruct
-        public void initialise() throws InterruptedException {
-            backgroundTask.slowCount();
-        }
-    
+```java
+@Configuration
+@EnableAsync
+public class BackgroundTaskInitialiser {
+
+    @Autowired
+    private BackgroundTask backgroundTask;
+
+    @PostConstruct
+    public void initialise() throws InterruptedException {
+        backgroundTask.slowCount();
     }
-    ```java
+
+}
+```java
 
 Reference: http://docs.spring.io/spring/docs/current/spring-framework-reference/html/scheduling.html
 
