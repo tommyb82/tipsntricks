@@ -157,6 +157,43 @@ to squash into the first.  Then optionally force-push the rewritten history to t
 (where tomcat is proxied on port 8083 via Apache). Crucial thing here is the -i lo to specify the LOCAL interface, not eth0, eth1 etc
 
 ### Spring
+#### Kicking off a background task at startup
+
+Class 1 (do something in the background..):
+
+    @Component
+    public class BackgroundTask {
+    
+        private int counter;
+    
+        @Async
+        void slowCount() throws InterruptedException {
+            while (true) {
+                out.println("Counter is now: " + ++counter);
+                Thread.sleep(5000);
+            }
+        }
+    
+    }
+
+Class 2: task scheduler
+
+    @Configuration
+    @EnableAsync
+    public class BackgroundTaskInitialiser {
+    
+        @Autowired
+        private BackgroundTask backgroundTask;
+    
+        @PostConstruct
+        public void initialise() throws InterruptedException {
+            backgroundTask.slowCount();
+        }
+    
+    }
+
+Reference: http://docs.spring.io/spring/docs/current/spring-framework-reference/html/scheduling.html
+
 #### Configuring SpringLoaded
 In Run Configuration - vmargs:
 
