@@ -161,6 +161,7 @@ to squash into the first.  Then optionally force-push the rewritten history to t
 
 Class 1 (do something in the background..):
 
+    ```java
     @Component
     public class BackgroundTask {
     
@@ -175,9 +176,11 @@ Class 1 (do something in the background..):
         }
     
     }
+    ```java
 
 Class 2: task scheduler
 
+    ```java
     @Configuration
     @EnableAsync
     public class BackgroundTaskInitialiser {
@@ -191,6 +194,7 @@ Class 2: task scheduler
         }
     
     }
+    ```java
 
 Reference: http://docs.spring.io/spring/docs/current/spring-framework-reference/html/scheduling.html
 
