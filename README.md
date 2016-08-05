@@ -157,6 +157,23 @@ to squash into the first.  Then optionally force-push the rewritten history to t
 (where tomcat is proxied on port 8083 via Apache). Crucial thing here is the -i lo to specify the LOCAL interface, not eth0, eth1 etc
 
 ### Spring
+#### Testing: assert a JSON property value is a valid datetime
+There isn't a built in Hamcrest Matcher for this, so we implement one in a Groovy closure:
+
+    .andExpect(jsonPath('$.my.date.time', [
+                    matches: { actual ->
+                        try{
+                            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ").parse(actual.toString())
+                            true
+                        } catch(any){
+                            any.printStackTrace()
+                            false
+                        } },
+                    describeTo: { Description description -> 'should be a datetime' }
+                ] as BaseMatcher))
+
+The matcher returns true if the value can be parsed without exception, false if not.
+
 #### Kicking off a background task at startup
 
 Class 1 (do something in the background..):
