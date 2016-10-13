@@ -260,6 +260,9 @@ Message channels represent the 'pipes' in a pipes-and-filters architecture.  Pro
 In SI, **Pollable* channels are capable of buffering messages in a queue, supporting throttling and overloading of a msg consumer.
 
 ### Maven / M2E
+#### Install and Deploy only (post package, useful in CD pipeline)
+    mvn jar:jar install:install deploy:deploy
+See: http://stackoverflow.com/questions/6308162/maven-the-packaging-for-this-project-did-not-assign-a-file-to-the-build-artifac
 
 #### JUnit class not found
 Run maven compile to resolve.
