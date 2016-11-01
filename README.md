@@ -350,4 +350,7 @@ In the background, with max container memory, host/guest OS port and volume mapp
 #### Add a tag to a resource
     $ aws ec2 create-tags --region eu-west-1 --resources vol-123456 --tags "Key=Name,Value=BigVolume"
 
+#### Tagging EBS volumes attached to EC2 instances
+Different options described here: https://blog.cloudability.com/two-solutions-for-tagging-elusive-aws-ebs-volumes/
+
  
