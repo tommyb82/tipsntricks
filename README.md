@@ -339,3 +339,8 @@ In the background, with max container memory, host/guest OS port and volume mapp
 
 #### Open shell into running container
     docker exec -it "id of running container" bash
+    
+### AWS
+#### Listing S3 bucket objects by last modified date
+    $ aws s3api list-objects --bucket my-bucket --no-paginate --query "sort_by(Contents, &LastModified)[*].[Key,LastModified,Size]"
+ 
