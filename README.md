@@ -343,4 +343,11 @@ In the background, with max container memory, host/guest OS port and volume mapp
 ### AWS
 #### Listing S3 bucket objects by last modified date
     $ aws s3api list-objects --bucket my-bucket --no-paginate --query "sort_by(Contents, &LastModified)[*].[Key,LastModified,Size]"
+    
+#### List tags on a resource
+    $ aws ec2 describe-tags --region eu-west-1 --filters "Name=resource-id,Values=vol-123456"
+    
+#### Add a tag to a resource
+    $ aws ec2 create-tags --region eu-west-1 --resources vol-123456 --tags "Key=Name,Value=BigVolume"
+
  
