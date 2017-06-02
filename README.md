@@ -284,7 +284,7 @@ In SI, **Pollable* channels are capable of buffering messages in a queue, suppor
 See: http://stackoverflow.com/questions/6308162/maven-the-packaging-for-this-project-did-not-assign-a-file-to-the-build-artifac
 
 #### JUnit class not found
-Run maven compile to resolve.
+Run maven compile to resolve
 
 #### m2eclipse project import incorrectly configured project / classpath
 Your workspace is likely corrupt - create a new one!
