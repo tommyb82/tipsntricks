@@ -25,6 +25,25 @@ has been used for the same purpose.  Wrapping the delegate connection in a try-w
 
 #### Java 8 
 
+##### Type Inference bug, GEC
+To declare and populate a map in a single statement, the following should work, but produces an incompatible types compiler error in the GEC (OK in Eclipse / JDK 8):
+    
+    private static final Map<Level, Severity> severityMap = unmodifiableMap(Stream
+            .of(new SimpleImmutableEntry<>(Level.ERROR, Severity.MAJOR),
+                    new SimpleImmutableEntry<>(Level.WARN, Severity.MINOR))
+            .collect(Collectors.toMap(Map.Entry::getKey,
+                    Map.Entry::getValue)));
+
+Instead we have to explicitly declare the type of the Strem and the collection operation:
+
+    private static final Map<Level, Severity> severityMap = unmodifiableMap(Stream
+            .<Entry<Level, Severity>> of(new SimpleImmutableEntry<>(Level.ERROR, Severity.MAJOR),
+                    new SimpleImmutableEntry<>(Level.WARN, Severity.MINOR))
+            .collect(Collectors.<Entry<Level, Severity>, Level, Severity> toMap(Map.Entry::getKey,
+                    Map.Entry::getValue)));
+
+Bah! Rubbish.
+
 ##### New methods on Collection interfaces
 In addition to the new stream-related methods, there are a number of really useful new default methods on the `Map` interface, for example:
 
@@ -353,4 +372,6 @@ In the background, with max container memory, host/guest OS port and volume mapp
 #### Tagging EBS volumes attached to EC2 instances
 Different options described here: https://blog.cloudability.com/two-solutions-for-tagging-elusive-aws-ebs-volumes/
 
+#### Describing volumes attached to an instance
+    $ aws ec2 --region eu-west-1 describe-volumes --filter "Name=attachment.instance-id,Values=i-abc123" --query "Volumes[].VolumeId" --out text
  
