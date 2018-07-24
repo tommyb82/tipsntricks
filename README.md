@@ -89,6 +89,9 @@ Regularly export preferences and code format (whenever a change has been made an
 Add regularly used static imports to **Window - Preferences - Java - Editor - Content Assist - Favourites**.  Good candidates are for example the Spring helper classes used in testing, e.g. `MockRestResponseCreators.*`, `MockMvcResultMatchers.*`, JUnit's `Assert.*` class, etc
 
 ### Git / EGit
+#### Git config editor Windows
+Fix it:
+    git config --replace-all core.editor notepad
 
 #### Local and remote branch rename:
 See https://multiplestates.wordpress.com/2015/02/05/rename-a-local-and-remote-branch-in-git/
