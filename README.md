@@ -91,6 +91,7 @@ Add regularly used static imports to **Window - Preferences - Java - Editor - Co
 ### Git / EGit
 #### Git config editor Windows
 Fix it:
+
     git config --replace-all core.editor notepad
 
 #### Local and remote branch rename:
