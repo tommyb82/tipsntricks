@@ -308,6 +308,7 @@ Quick fix - ignore - solved. Or: http://stackoverflow.com/questions/15938466
     
 #### Xmllint
 Query xml with xpath from shell:
+    
     var1=$(xmllint --xpath "//*[local-name()='definitions']/*[local-name()='portType']/@name" service.wsdl)
 
 ### Google Chrome
