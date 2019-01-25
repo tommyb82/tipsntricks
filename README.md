@@ -346,6 +346,11 @@ void configure() {
     }
 ```
 
+#### CXF & Camel: Get raw SOAP XML for processing in routing
+In `PAYLOAD` data format, the raw XML from the transport layer containg the SOAP envelope has to be captured in a CXF interceptor **before** it is processed by CXF.  The raw XML can then be stored on the CXF `Message` headers and retrieved later in the routing logic via the `CxfConstants.CAMEL_CXF_MESSAGE` exhange header object which contains the message.
+
+See http://camel.465427.n5.nabble.com/Getting-entire-Soap-Message-with-header-and-body-in-Payload-mode-td5753162.html for example
+
 ### Docker
 #### Open a shell within an existing container
     sudo docker exec -it <containerID> bash
