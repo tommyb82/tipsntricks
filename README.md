@@ -88,6 +88,10 @@ Regularly export preferences and code format (whenever a change has been made an
 #### Favourite static imports
 Add regularly used static imports to **Window - Preferences - Java - Editor - Content Assist - Favourites**.  Good candidates are for example the Spring helper classes used in testing, e.g. `MockRestResponseCreators.*`, `MockMvcResultMatchers.*`, JUnit's `Assert.*` class, etc
 
+#### Maven err: Compiler error "archive for required library could not be read" - Spring Tool Suite
+E.g. with aspectjweaver dependency - JAR is present and not corrupt, can be opened in any zip utility.. 
+Resolution in STS 4 as described in this answer:  https://stackoverflow.com/a/78653511/2509595
+
 ### Git / EGit
 #### Git config editor Windows
 Fix it:
